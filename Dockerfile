@@ -3,17 +3,15 @@ FROM php:8.2-fpm-alpine
 
 # --- Buildtools & PHP-Extensions ---
 RUN apk add --no-cache --virtual .build-deps \
-        autoconf g++ make bash git \
+        autoconf g++ make bash git cmake \
     && apk add --no-cache \
         libpng-dev libjpeg-turbo-dev freetype-dev libwebp-dev zlib-dev oniguruma-dev \
-        zip unzip \
-    \
+        zip unzip libzip-dev \
     && docker-php-ext-configure gd \
         --with-freetype \
         --with-jpeg \
         --with-webp \
     && docker-php-ext-install -j$(nproc) mysqli pdo pdo_mysql gd zip mbstring \
-    \
     && apk del .build-deps
 
 # --- Composer installieren ---
