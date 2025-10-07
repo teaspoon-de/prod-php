@@ -1,25 +1,20 @@
 # --- Basisimage ---
 FROM php:8.2-fpm-alpine
 
-# --- Systempakete & PHP-Extensions ---
-RUN apk add --no-cache \
-        bash \
-        git \
-        zip \
-        unzip \
-        libpng-dev \
-        libjpeg-turbo-dev \
-        freetype-dev \
-        oniguruma-dev \
+# --- Buildtools & PHP-Extensions ---
+RUN apk add --no-cache --virtual .build-deps \
+        autoconf g++ make bash git \
+    && apk add --no-cache \
+        libpng-dev libjpeg-turbo-dev freetype-dev libwebp-dev zlib-dev oniguruma-dev \
+        zip unzip \
+    \
     && docker-php-ext-configure gd \
         --with-freetype \
         --with-jpeg \
-    && docker-php-ext-install -j$(nproc) \
-        mysqli \
-        pdo \
-        pdo_mysql \
-        gd \
-        zip
+        --with-webp \
+    && docker-php-ext-install -j$(nproc) mysqli pdo pdo_mysql gd zip mbstring \
+    \
+    && apk del .build-deps
 
 # --- Composer installieren ---
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
@@ -27,12 +22,12 @@ COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 # --- Arbeitsverzeichnis ---
 WORKDIR /var/www/html
 
-# --- Projektdaten einfuegen ---
+# --- Projektdateien kopieren (für Production) ---
 COPY --chown=www:www . /var/www/html
 
-# --- Non-root User (Sicherheit) ---
+# --- Non-root User für Sicherheit ---
 RUN addgroup -g 1000 www && adduser -G www -g www -s /bin/sh -D www
 USER www
 
-# --- Finaler Startbefehl ---
+# --- Startbefehl ---
 CMD ["php-fpm"]
