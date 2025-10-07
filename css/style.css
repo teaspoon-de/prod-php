@@ -1,0 +1,307 @@
+:root {
+    --bg: var(--white);
+    --bgCon: var(--whiteCon);
+    --text: var(--schwatz);
+    --textCon: var(--schwatzCon);
+    --main: var(--red);
+    --contrast: var(--orange);
+
+    --white: #e2e5e9;
+    --whiteCon: #8a8b8b;
+    --orange: #f38600;;
+    --red: #da2c00;
+    --schwatz: #000000;
+    --schwatzCon: #3f3f3f;
+
+    --invis: rgba(32, 67, 112, 0);
+    --blackShade: rgba(0, 0, 0, 0.818);
+
+    --fontStandart: "PT Sans", sans-serif;
+    --fontHead: "Special Elite", sans-serif;
+}
+
+html, body {
+    height: 100%;
+    width: 100%;
+    /*background-color: #2f3136;*/
+    overflow-x: hidden;
+    /*font-family: trebuchet ms, sans-serif;*/
+    color: var(--text);
+    background-color: var(--text);
+    -webkit-font-smoothing: antialiased;
+    font-family: var(--fontStandart);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.null {
+    display: none;
+}
+
+
+
+section {
+    width: 100%;
+    display: flex;
+    z-index: 500;
+    padding-top: 100px;
+    padding-bottom: 100px;
+}
+
+button {
+    color: var(--text);
+    background-color: var(--bg);
+    padding: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    box-shadow: 5px 5px 0px var(--text);
+    font-weight: 800;
+    font-size: 23px;
+    width: fit-content;
+}
+.button {
+    color: var(--text);
+    background-color: var(--bg);
+    padding: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    box-shadow: 5px 5px 0px var(--text);
+    font-weight: 800;
+    font-size: 23px;
+    text-decoration: none;
+    width: fit-content;
+    border-width: 1px;
+    border-style: solid;
+    border-color: var(--text);
+}
+
+h2 {
+    font-family: var(--fontHead);
+    font-size: 30px;
+}
+
+p {
+    font-size: 23px;
+    cursor: pointer;
+}
+
+
+.artShort {
+    flex-direction: column;
+    background-color: var(--bg);
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+}
+.artShort h1 {
+    text-align: center;
+    font-family: var(--fontHead);
+    font-size: 60px;
+}
+.artShort article {
+    gap: 40px;
+    padding-left: 40px;
+    padding-right: 40px;
+    display: flex;
+}
+.artShort article img {
+    width: 250px;
+    height: 250px;
+    box-shadow: 5px 5px 0px var(--text);
+}
+.artShort article .noShadow {
+    box-shadow: none;
+}
+.artShort div {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    justify-content: center;
+}
+.artShort div h2 {
+    font-family: var(--fontHead);
+    font-size: 30px;
+}
+.artShort div h4 {
+    font-size: 20px;
+    color: var(--textCon);
+    margin-top: -18px;
+    margin-bottom: -18px;
+}
+.reverseCol {
+    color: var(--bg);
+    background-color: var(--text);
+}
+.reverseCol article img {
+    box-shadow: 5px 5px 0px var(--bg);
+}
+.reverseCol div h4 {
+    font-size: 20px;
+    color: var(--bgCon);
+}
+.reverseCol article button {
+    color: var(--bg);
+    background-color: var(--text);
+    box-shadow: 5px 5px 0px var(--bg);
+    border-color: var(--bg);
+}
+
+
+
+
+#topbarBg {
+    position: fixed;
+    height: 120px;
+    width: 100%;
+    background-color: var(--text);
+    z-index: 4900;
+}
+#topbar {
+    position: fixed;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    height: 80px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    z-index: 5000;
+    color: var(--bg);
+}
+#topbar .menuIcon {
+    align-self: center;
+    margin-right: 40px;
+}
+#topbar img {
+    margin-left: 100px;
+    height: 80px;
+    justify-self: center;
+}
+
+
+#menu {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    height: 100%;
+    width: 100%;
+    z-index: 4975;
+    background-color: var(--blackShade);
+    display: none;
+    flex-direction: column;
+    color: var(--bg);
+    align-items: center;
+    justify-content: center;
+    gap: 60px;
+}
+#menu p {
+    font-size: 50px;
+    text-align: center;
+}
+#menu p:hover {
+    text-decoration: underline;
+}
+#menu p a {
+    text-decoration: none;
+    color: var(--bg);
+}
+#menu .social {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+
+
+#intro {
+    top: 100px;
+    flex-direction: column;
+    background-color: var(--text);
+    color: var(--bg);
+    padding-top: 0px;
+}
+#intro img {
+    z-index: 4950;
+    width: 100%;
+}
+#intro .slogan {
+    padding: 80px;
+    padding-top: 100px;
+    padding-bottom: 50px;
+    text-align: center;
+    font-size: 60px;
+    font-family: var(--fontHead);
+}
+#intro div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+#intro div p {
+    font-size: 23px;
+    width: 200px;
+}
+#intro div button {
+    color: var(--bg);
+    background-color: var(--text);
+    box-shadow: 5px 5px 0px var(--bg);
+}
+#intro div .button {
+    color: var(--bg);
+    background-color: var(--text);
+    box-shadow: 5px 5px 0px var(--bg);
+    border-color: var(--bg);
+}
+
+
+
+
+#footer {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    color: var(--bg);
+    background-color: var(--text);
+}
+#footer p {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+#footer p a {
+    color: var(--bg);
+    text-decoration: none;
+}
+#footer p a:hover {
+    text-decoration: underline;
+}
+
+
+
+
+
+#impressum {
+    color: var(--text);
+    background-color: var(--bg);
+    padding-top: 130px;
+    padding-bottom: 200px;
+}
+#impressum article {
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 0px;
+}
+#impressum h1 {
+    font-size: 35px;
+    margin-top: 50px;
+}
+#impressum p {
+    font-size: 23px;
+    margin-top: 20px;
+}
