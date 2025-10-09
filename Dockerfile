@@ -20,8 +20,8 @@ COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 # --- Arbeitsverzeichnis ---
 WORKDIR /var/www/html
 
-# --- Projektdateien kopieren (für Production) ---
-COPY --chown=www:www . /var/www/html
+# --- Projektdateien kopieren ---
+# COPY --chown=www:www . /var/www/html
 
 # --- Non-root User für Sicherheit ---
 RUN addgroup -g 1000 www && adduser -G www -g www -s /bin/sh -D www
